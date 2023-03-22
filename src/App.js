@@ -2,11 +2,10 @@ import './App.css';
 import styles from './styles/App.module.css';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import AddRequestForm from './components/addRequestForm';
 import Profile from './components/profile';
-import { Box, textAlign } from '@mui/system';
-import { useContext, useEffect, useState } from 'react';
+import { Box } from '@mui/system';
+import { useContext, useState } from 'react';
 import { FirebaseContext } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 

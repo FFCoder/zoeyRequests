@@ -29,8 +29,8 @@ const styles = {
   select: {
     width: "100%",
     marginTop: "1rem",
-    padding: '0.5rem'
-  }
+    padding: "0.5rem",
+  },
 };
 
 const builder = (schema, ref, onSubmit) => {
@@ -116,6 +116,9 @@ const builder = (schema, ref, onSubmit) => {
           </FormControl>
         );
         break;
+      default:
+        element = <div></div>;
+        break;
     }
     return element;
   });
@@ -126,30 +129,41 @@ const builder = (schema, ref, onSubmit) => {
       </Typography>
       <form ref={ref} name={name}>
         {formFields}
-        <Button sx={styles.button} variant="contained" color="primary" onClick={() => {
-          let data = {};
-          fields.forEach((field) => {
-            switch (field.type) {
-              case "string":
-              case "text":
-                data[field.name] = document.getElementById(field.name).value;
-                break;
-              case "date":
-                data[field.name] = document.getElementById(field.name).value;
-                break;
-              case "time":
-                data[field.name] = document.getElementById(field.name).value;
-                break;
-              case "boolean":
-                data[field.name] = document.getElementById(field.name).checked;
-                break;
-              case "multiple":
-                data[field.name] = document.getElementById(`${field.name}_label`).value;
-                break;
-            }
-          });
-          onSubmit(data);
-        }}>
+        <Button
+          sx={styles.button}
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            let data = {};
+            fields.forEach((field) => {
+              switch (field.type) {
+                case "string":
+                case "text":
+                  data[field.name] = document.getElementById(field.name).value;
+                  break;
+                case "date":
+                  data[field.name] = document.getElementById(field.name).value;
+                  break;
+                case "time":
+                  data[field.name] = document.getElementById(field.name).value;
+                  break;
+                case "boolean":
+                  data[field.name] = document.getElementById(
+                    field.name
+                  ).checked;
+                  break;
+                case "multiple":
+                  data[field.name] = document.getElementById(
+                    `${field.name}_label`
+                  ).value;
+                  break;
+                default:
+                  break;
+              }
+            });
+            onSubmit(data);
+          }}
+        >
           Submit
         </Button>
       </form>

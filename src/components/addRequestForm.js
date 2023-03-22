@@ -4,7 +4,6 @@ import schemaBuilder from '../schemas/builder';
 import { addDoc, collection  } from "firebase/firestore"; 
 import { useContext, useRef  } from 'react';
 import { FirebaseContext} from '../firebase';
-import { Button } from '@mui/material';
 
 let firestore;
 let user;
